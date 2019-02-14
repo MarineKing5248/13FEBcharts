@@ -9,14 +9,12 @@ function charts() {
         },
         success: function(data) {
             tempResult = data.results[0].series[0].values;
-            console.log(tempResult);
             draw(tempResult);
         },
         error: function() {
             console.log("AjaxError");
         }
     });
-
     function draw(tempResult) {
         var timeAxe = [];
         var pressureAxe = [];
@@ -40,9 +38,7 @@ function charts() {
             mode: "lines+markers",
             name: "Scatter + Lines"
         };
-
         var data = [trace1];
-
         var layout = {
             title: "V2",
             xaxis: {
@@ -52,11 +48,9 @@ function charts() {
                 title: "pressure"
             }
         };
-
         Plotly.newPlot("myDiv", data, layout, { showSendToCloud: true });
     }
 }
-
 setInterval(function() {
     charts();
 }, 1000);
